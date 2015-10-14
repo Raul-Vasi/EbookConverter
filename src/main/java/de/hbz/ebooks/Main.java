@@ -28,10 +28,11 @@ public class Main {
 				eBookConverter(args[1], args[2]);
 				break;
 			case "-web":
-				DateFormat dfmt = new SimpleDateFormat("hhmmssddMMyyyy");
+				DateFormat dfmt = new SimpleDateFormat("yyyyMMddhhmmss");
 				webDownloader(args[1], args[2], dfmt.format(new Date()) + "WebDownload");
 				break;
 			}
+
 		} else {
 			switch (args[0]) {
 			case "-local":
@@ -48,7 +49,7 @@ public class Main {
 	static void eBookConverter(String source, String outputfile) {
 		try {
 			EbookConverter conv = new EbookConverter(source);
-			File result = conv.convert(outputfile);
+			conv.convert(outputfile);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
